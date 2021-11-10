@@ -1,0 +1,31 @@
+<h1> Create Your Recipe! </h1>
+
+<%= form_for(@recipe) do |t| %>
+  
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+  <br>
+  <br>
+  <%= t.label :description %>
+  <%= t.text_field :description %>
+  <br>
+  <br>
+  <%= t.label :required_appliances %>
+  <br>
+  <%= t.text_area :required_appliances %>
+  <br>
+  <br>
+  <%= t.label :ingredient_list %>
+  <br>
+  <%= t.text_area :ingredient_list %>
+  <br>
+  <br>
+  <%= t.label :instructions %>
+  <br>
+  <%= t.text_area :instructions %>
+  <br>
+  <br>
+  <%= t.hidden_field :user_id, value: session[:user_id] %>
+
+  <%= t.submit %>
+<% end  %>

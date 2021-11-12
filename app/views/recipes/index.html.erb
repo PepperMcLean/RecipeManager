@@ -1,3 +1,5 @@
+
+<h1>Most Reviewed Recipe: <%= link_to @recipes.most_reviewed.first.title, recipe_path(@recipes.most_reviewed.first)%> </h1>
 <ul>
   <% @recipes.each do |t|%>
     <li><%= link_to t.title, recipe_path(t) %> - <%= average_rating(t) %>/5 - <%= t.description%> </li>

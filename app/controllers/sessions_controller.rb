@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      @error = "Incorrect Login Information, please try again."
+      flash[:message] = "Incorrect Login Information, please try again."
       redirect_to "/login"
     end
   end

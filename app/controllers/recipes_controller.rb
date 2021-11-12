@@ -63,6 +63,11 @@ class RecipesController < ApplicationController
       total += t.rating
       count += 1
     end
-    return (total/count).round(2)
+    x = (total/count).round(2)
+    if x.nan?
+      return "Unreviewed"
+    else
+      return x
+    end
   end
 end

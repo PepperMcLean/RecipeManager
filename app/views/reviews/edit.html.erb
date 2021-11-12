@@ -1,3 +1,6 @@
+
+<%= render partial: "layouts/errors", locals: {object: @review} %>
+
 <%= form_for(@review) do |t| %>
   <br>
   <%= t.label :rating %>

@@ -1,5 +1,7 @@
 <h1>Sign Up</h1>
 
+<%= render partial: "layouts/errors", locals: {object: @user} %>
+
 <%= form_for(@user) do |t| %>
   <%= t.label :email %>
   <%= t.email_field :email %>

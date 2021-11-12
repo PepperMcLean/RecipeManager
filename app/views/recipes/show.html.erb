@@ -1,10 +1,22 @@
 <h1> <%= @recipe.title %> </h1>
-<h2> <%= @recipe.description %> </h2>
-<body>
-  <h3> Required Appliances </h3>
-    <li> <%= @recipe.required_appliances %> </li>
-  <h3> Ingredients </h3>
-    <li> <%= @recipe.ingredient_list %> </li>
-  <h3> Instructions </h3>
-    <li> <%= @recipe.instructions %> </li>
-</body>
+<h2> By: <%= link_to @recipe.user.display_name, user_path(@recipe.user) %> </h2>
+<h2> Rated: <%= average_rating(@recipe) %>/5 Stars </h2>
+<h3> <%= @recipe.description %> </h2>
+<h5> Required Appliances </h5>
+<li> <%= @recipe.required_appliances %> </li>
+<h5> Ingredients </h5>
+<li> <%= @recipe.ingredient_list %> </li>
+<h5> Instructions </h5>
+<li> <%= @recipe.instructions %> </li>
+<br>
+<% if current_user == @recipe.user %>
+  <%= link_to "Edit Recipe", edit_recipe_path(@recipe)%>
+<% end %>
+
+<h2> Reviews: </h2>
+<%= link_to "Write a review", new_recipe_review_path(@recipe) %>
+<br>
+<br>
+<% @recipe.reviews.each do |t| %>
+  <li><%= link_to t.title, review_path(t) %> Rated: <%= t.rating %>/5 Stars By <%= link_to t.user.display_name, user_path(t.user) %></li>
+<% end %>

@@ -15,12 +15,20 @@
     <br>
       <% if !logged_in? %>
         <%= link_to "Sign Up", signup_path %> |
-        <%= link_to "Log In", login_path %> 
+        <%= link_to "Log In", login_path %> |
+        <%= link_to "Log In With Google", 'auth/google_oauth2', method:"POST" %> 
       <% else %>
+        <%= link_to "Home", user_path(current_user) %> |
         <%= link_to "Add a Recipe", new_recipe_path %> |
         <%= link_to "All Recipes", recipes_path %> |
+        <%= link_to "Add a Review to a Recipe", new_review_path %> |
         <%= link_to "Logout", logout_path, method:"delete" %>
       <% end %>
+    </div>
+
+    <div>
+    <br>
+      <%= @error %>
     </div>
   
     <%= yield %>

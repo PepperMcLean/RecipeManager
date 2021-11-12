@@ -11,8 +11,21 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash[:message] = "Incorrect Login Information, please try again."
+      @error = "Incorrect Login Information, please try again."
       redirect_to "/login"
     end
+  end
+
+  def googleauth
+    @user = User.from_omniauth(auth)
+    @user.save
+    session[:user_id] = @user.id
+    redirect_to user_path(@user)
+  end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
   end
 end

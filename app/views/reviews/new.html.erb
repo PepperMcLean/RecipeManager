@@ -1,0 +1,32 @@
+<% if @recipe %>
+  <h1> New Review for <%= @recipe.title %> By: <%= @recipe.user.display_name %> </h1>
+<% else %>
+  <h1> New Review </h1>
+<% end %>
+
+<%= render partial: "layouts/errors", locals: {object: @review} %>
+
+<body>
+<%= form_for([@recipe, @review]) do |t| %>
+  <% if !@recipe %>
+    <%= t.label :recipe %>
+    <%= t.collection_select :recipe_id, Recipe.all, :id, :title %>
+  <% else %>
+    <%= t.hidden_field :recipe_id %>
+  <% end %>
+  <br>
+  <%= t.label :rating %>
+  <%= t.text_field :rating %>
+  <br>
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+  <br>
+  <%= t.label :content %>
+  <br>
+  <%= t.text_area :content %>
+  <br>
+  <br>
+
+  <%= t.submit %>
+<% end  %>
+</body>

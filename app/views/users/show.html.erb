@@ -1,1 +1,12 @@
-<h1> Welcome <%= @user.display_name %> </h1>
+<h1><%= @user.display_name %>'s Profile </h1>
+<h3> <%= @user.display_name %>'s Recipes: </h3>
+<% @user.recipes.order(updated_at: :desc).limit(3).each do |t| %>
+  <li><%= link_to t.title, recipe_path(t) %> - <%= t.description%> </li>
+<% end %>
+<p><%= link_to 'See all Recipes', user_recipes_path(@user)%></p>
+<br>
+<h3> <%= @user.display_name %>'s Reviews:</h3>
+<% @user.reviews.order(updated_at: :desc).limit(3).each do |t| %>
+  <li><%= link_to t.title, review_path(t) %> - <%= t.content%> </li>
+<% end %>
+<p><%= link_to 'See all Reviews', user_reviews_path(@user)%></p>

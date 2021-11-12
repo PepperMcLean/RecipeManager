@@ -1,0 +1,20 @@
+<%= form_for(@review) do |t| %>
+  <br>
+  <%= t.label :rating %>
+  <%= t.text_field :rating %>
+  <br>
+  <br>
+  <%= t.label :title %>
+  <%= t.text_field :title %>
+  <br>
+  <br>
+  <%= t.label :content %>
+  <br>
+  <%= t.text_area :content %>
+  <br>
+  <br>
+  <%= t.hidden_field :user_id, value: session[:user_id] %>
+  <%= t.hidden_field :recipe_id %>
+
+  <%= t.submit %>
+<% end  %>

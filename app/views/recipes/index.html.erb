@@ -1,5 +1,5 @@
 <ul>
   <% @recipes.each do |t|%>
-    <li><%= link_to t.title, recipe_path(t) %> - <%= t.description%> </li>
+    <li><%= link_to t.title, recipe_path(t) %> - <%= average_rating(t) %>/5 - <%= t.description%> </li>
   <% end %>
 </ul>

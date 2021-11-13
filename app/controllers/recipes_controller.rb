@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
+  helper_method :average_rating
   before_action :redirect_if_not_logged_in
   before_action :recipe_author_check, only: [:edit, :update]
-  helper_method :average_rating
+  before_action :set_recipe, only: [:show, :edit, :update]
 
   def new
     @recipe = Recipe.new
@@ -26,15 +27,12 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find_by(id: params[:id])  
   end
 
-  def edit
-    @recipe = Recipe.find_by(id: params[:id])  
+  def edit 
   end
 
   def update
-    @recipe = Recipe.find_by(id: params[:id])
     if @recipe.update(recipe_params)
       redirect_to recipe_path
     else
@@ -50,7 +48,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_author_check
-    @recipe = Recipe.find_by(id: params[:id])
+    set_recipe
     if @recipe.user != current_user
       redirect_to recipes_path 
     end
@@ -70,4 +68,9 @@ class RecipesController < ApplicationController
       return x
     end
   end
+
+  def set_recipe
+    @recipe = Recipe.find_by(id: params[:id])
+  end
+
 end

@@ -17,6 +17,4 @@
 <%= link_to "Write a review", new_recipe_review_path(@recipe) %>
 <br>
 <br>
-<% @recipe.reviews.each do |t| %>
-  <li><%= link_to t.title, review_path(t) %> Rated: <%= t.rating %>/5 Stars By <%= link_to t.user.display_name, user_path(t.user) %></li>
-<% end %>
+<%= render partial: "reviews/reviews", locals: {reviews: @recipe.reviews}  %>

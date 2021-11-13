@@ -1,0 +1,5 @@
+<ul>
+  <% reviews.each do |t|%>
+    <li><%= link_to t.title, review_path(t) %> By <%= link_to t.user.display_name, user_path(t.user) %> Rated: <%= t.rating %>/5 Stars</li>
+  <% end %>
+</ul>

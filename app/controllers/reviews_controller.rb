@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
   before_action :review_author_check, only: [:edit, :update]
+  before_action :set_review, only: [:show, :edit, :update]
 
   def new
     if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
@@ -30,15 +31,12 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find_by(id: params[:id])  
   end
   
   def edit
-    @review = Review.find_by(id: params[:id])  
   end
 
   def update
-    @review = Review.find_by(id: params[:id])
     if @review.update(review_params)
       redirect_to review_path
     else
@@ -53,9 +51,13 @@ class ReviewsController < ApplicationController
   end
 
   def review_author_check
-    @review = Review.find_by(id: params[:id])
+    set_review
     if @review.user != current_user
       redirect_to reviews_path 
     end
   end
+
+  def set_review
+    @review = Review.find_by(id: params[:id])
+  end 
 end

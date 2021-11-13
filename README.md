@@ -1,24 +1,29 @@
-# README
+# RecipeManager
+This application makes a nice little site that will allow users to create recipes and review other peoples recipes.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install Instructions
+Clone the repository.
+```sh
+$ git clone git@github.com:PepperMcLean/RecipeManager.git
+```
+Install the dependencies 
+```sh
+$ bundle install
+```
+Prepare the Database
+```sh
+$ rake db:migrate
+```
+## Usage
+Type 'rails s' into the command line and open the website
+```sh
+$ rails s
+```
+## Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/PepperMcLean/RecipeManager. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant code of conduct](https://www.contributor-covenant.org/).
 
-Things you may want to cover:
+## License
+[MIT](LICENSE)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Conduct
+Everyone interacting in the RecipeManagers project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](CodeOfConduct.md).

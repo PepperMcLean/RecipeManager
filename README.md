@@ -15,7 +15,7 @@ Prepare the Database
 $ rake db:migrate
 ```
 ## Usage
-Type 'rails s' into the command line and open the website
+Type 'rails s' into the command line to browse the website at http://localhost:3000
 ```sh
 $ rails s
 ```
